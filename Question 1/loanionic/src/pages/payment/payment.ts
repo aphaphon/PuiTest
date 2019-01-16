@@ -3,7 +3,6 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { Loan } from '../../models/loan';
 
-
 @IonicPage()
 @Component({
   selector: 'page-payment',
@@ -11,7 +10,7 @@ import { Loan } from '../../models/loan';
 })
 export class PaymentPage {
 
-  private loans: Loan;
+  public loans: Loan;
 
   constructor(public navCtrl: NavController, public http: HttpClient) {
     this.http.get<Loan>("https://localhost:5001/api/Loan").subscribe(

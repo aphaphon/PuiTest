@@ -1,27 +1,27 @@
 <ion-header>
-    <ion-navbar>
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>ยอดที่ต้องชำระ</ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>ยอดที่ต้องชำระ</ion-title>
+  </ion-navbar>
+</ion-header>
 
 
 <ion-content padding>
-    <ion-row>
-      <ion-item col-3 text-center>ปีที่</ion-item>
-      <ion-item col-3 text-center>คงค้าง</ion-item>
-      <ion-item col-3 text-center>ดอกเบี้ย</ion-item>
-      <ion-item col-3 text-center>ยอดที่ต้องชำระ</ion-item>
-    </ion-row>
-  
-    <ion-row *ngFor="let it of loans">
-      <ion-item col-3 text-center>{{it.count}}</ion-item>
-      <ion-item col-3 text-center>{{it.balance}}</ion-item>
-      <ion-item col-3 text-center>{{it.interestRate}}</ion-item>
-      <ion-item col-3 text-center>{{it.payment}}</ion-item>
-    </ion-row>
-  
+  <ion-row>
+    <ion-item col-3 text-center>ปีที่</ion-item>
+    <ion-item col-3 text-center>คงค้าง</ion-item>
+    <ion-item col-3 text-center>ดอกเบี้ย</ion-item>
+    <ion-item col-3 text-center>ยอดที่ต้องชำระ</ion-item>
+  </ion-row>
+
+  <ion-row *ngFor="let it of loans">
+    <ion-item col-3 text-center>{{it.count}}</ion-item>
+    <ion-item col-3 text-center>{{it.balance}}</ion-item>
+    <ion-item col-3 text-center>{{it.interestRate}}</ion-item>
+    <ion-item col-3 text-center>{{it.payment}}</ion-item>
+  </ion-row>
+
 
 </ion-content>

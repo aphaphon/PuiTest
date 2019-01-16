@@ -9,9 +9,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ListPage {
 
-  private loans: Loan;
-  private balances: number;
-  private years: number;
+  public loans: Loan;
+  public balance: number;
+  public count: number;
 
   constructor(public navCtrl: NavController, public http: HttpClient) {
     this.http.get<Loan>("https://localhost:5001/api/Loan").subscribe(
@@ -24,8 +24,8 @@ export class ListPage {
   CalculatePayment() {
     this.http.post<Loan>("https://localhost:5001/api/Loan",
       {
-        Balance: this.balances,
-        CountYear: this.years
+        Balance: this.balance,
+        Count: this.count
       }).subscribe(
         it => {
           this.loans = it;
