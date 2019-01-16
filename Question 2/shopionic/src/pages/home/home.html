@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>บริหารสินค้า</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>ชื่อสินค้า</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-input type="name" placeholder="กรุณาระบุชื่อสินค้า" [(ngModel)]="productOrderName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>ราคาต่อหน่วย</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-input type="number" placeholder="กรุณาระบุราคาต่อหน่วย" [(ngModel)]="productOrderPrice"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>จำนวน</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-input type="number" placeholder="กรุณาระบุจำนวน" [(ngModel)]="productOrderAmount"></ion-input>
+  </ion-item>
+
+
+  <hr>
+  <div text-center>
+    <button ion-button color="secondary" (click)="orderProduct()">เพิ่มรายการ</button>
+  </div>
+
+</ion-content>

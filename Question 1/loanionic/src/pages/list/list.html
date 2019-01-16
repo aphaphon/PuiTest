@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>คำนวนยอดรายปี</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input type="number" placeholder="ยอดเงินต้น" [(ngModel)]="balance"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="number" placeholder="จำนวนปี" [(ngModel)]="count"></ion-input>
+  </ion-item>
+  <br>
+  <div text-center>
+    <button ion-button color="secondary" round col-6 (click)="CalculatePayment()">คำนวน</button>
+  </div>
+
+</ion-content>
