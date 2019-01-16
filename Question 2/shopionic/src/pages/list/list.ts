@@ -1,37 +1,33 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { AllProduct } from '../../models/allproduct';
+import { HttpClient } from '@angular/common/http';
+import { ShopPage } from '../shop/shop';
 
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
 export class ListPage {
-  selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+  public allProducts: AllProduct = new AllProduct();
+  private ProductOrderAmount: number;
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
 
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+  constructor(public navCtrl: NavController, public http: HttpClient, public navParams: NavParams) {
+    this.http.get<AllProduct>("http://localhost:5000/api/Shop").subscribe(
+      it => {
+        this.allProducts = it;
       });
-    }
   }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
-    });
+  goShopPage() {
+    this.http.post<AllProduct>("https://localhost:5001/api/Shop", { Amount: this.ProductOrderAmount })
+      .subscribe(
+        it => {
+          console.log(it);
+          this.allProducts = it;
+          this.navCtrl.push(ShopPage)
+        });
   }
 }

@@ -14,16 +14,6 @@ namespace shopapi.Controllers
         private static List<ProductOrder> productOrders = new List<ProductOrder>();
         private static int Count = 1;
 
-        [HttpPost]
-        public void Post([FromBody] ProductOrder productOrder)
-        {
-            productOrder.OrderId = $"Order{Count++}";
-            productOrder.Name = productOrder.Name;
-            productOrder.TotalAmount = productOrder.Price * productOrder.Amount;
-            productOrder.Discount = CalculateDiscount(productOrder.Amount, productOrder.Price);
-            productOrders.Add(productOrder);
-        }
-
         [HttpGet]
         public ActionResult<AllProduct> Get()
         {
@@ -38,21 +28,29 @@ namespace shopapi.Controllers
             var dis = sumDis;
             var pay = allTotal - dis;
 
-            var avg = new AllProduct
+            var products = new AllProduct
             {
                 AllProducts = productOrders,
                 Alltotal = allTotal,
                 Discount = dis,
                 Pay = pay,
             };
-            return avg;
+            return products;
+        }
+
+        [HttpPost]
+        public void Post([FromBody] ProductOrder productOrder)
+        {
+            productOrder.Name = productOrder.Name;
+            productOrder.TotalAmount = productOrder.Price * productOrder.Amount;
+            productOrder.Discount = CalculateDiscount(productOrder.Amount, productOrder.Price);
+            productOrders.Add(productOrder);
         }
 
         private int CalculateDiscount(int Amount, int Price)
         {
             return (Amount / 4) * Price;
         }
-
 
     }
 }

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>สั่งซื้อสินค้า</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row>
+    <ion-item col-3 text-center>ชื่อสินค้า</ion-item>
+    <ion-item col-3 text-center>จำนวน</ion-item>
+    <ion-item col-3 text-center>ราคาต่อหน่วย</ion-item>
+    <ion-item col-3 text-center>ยอดรวม</ion-item>
+  </ion-row>
+
+  <ion-row *ngFor="let it of allProducts.allProducts">
+    <ion-item col-3 text-center>{{it.name}}</ion-item>
+    <ion-item col-3 text-center>{{it.amount}}</ion-item>
+    <ion-item col-3 text-center>{{it.price}}</ion-item>
+    <ion-item col-3 text-center>{{it.totalAmount}}</ion-item>
+  </ion-row>
+  <div text-right>
+    <ion-label>ยอดรวมทั้งหมด : {{ allProducts.alltotal }}</ion-label>
+    <ion-label>ส่วนลด ซื้อ 3 แถม 1 : {{ allProducts.discount }}</ion-label>
+    <ion-label>ยอดเงินที่ต้องจ่ายหลังหักส่วนลด : {{ allProducts.pay }}</ion-label>
+  </div>
+
+  <hr>
+  <div text-center>
+    <button ion-button color="danger" (click)="goHomePage()">สั่งซื้อสินค้า</button>
+  </div>
+
+</ion-content>
