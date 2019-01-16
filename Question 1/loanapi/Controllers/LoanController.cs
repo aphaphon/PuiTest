@@ -12,18 +12,20 @@ namespace loanapi.Controllers
     public class LoanController : ControllerBase
     {
         private static List<Loan> loans = new List<Loan>();
-        private static int Count = 1;
+        private static int Counts = 1;
 
         [HttpPost]
         public void Post([FromBody] Loan loan)
         {
-            loan.CountYear = $"ปีที่{Count++}:";
-            loan.InterestRate = loan.Balance * 12 / 100;
+            loan.Count = Counts++;
+            loan.Balance = loan.Balance;
+            loan.InterestRate = loan.InterestRate;
+            loan.InterestRate = loan.Balance * loan.InterestRate / 100;
             loan.Payment = loan.Balance + loan.InterestRate;
             loans.Add(loan);
         }
 
-         [HttpGet]
+        [HttpGet]
         public IEnumerable<Loan> Get()
         {
             return loans;

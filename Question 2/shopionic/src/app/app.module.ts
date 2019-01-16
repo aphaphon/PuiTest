@@ -9,26 +9,23 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http'
-import { PaymentPage } from '../pages/payment/payment';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
-    PaymentPage
+    ListPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
-    PaymentPage
+    ListPage
   ],
   providers: [
     StatusBar,

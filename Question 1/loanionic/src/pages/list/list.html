@@ -9,32 +9,14 @@
 
 <ion-content>
   <ion-item>
-    <ion-input type="number" placeholder="ยอดเงินต้น"></ion-input>
+    <ion-input type="number" placeholder="ยอดเงินต้น" [(ngModel)]="Balance"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input type="number" placeholder="จำนวนปี"></ion-input>
+    <ion-input type="number" placeholder="จำนวนปี" [(ngModel)]="Years"></ion-input>
   </ion-item>
   <br>
   <div text-center>
-    <button ion-button color="secondary" round>คำนวน</button>
+    <button ion-button color="secondary" round col-6 (click)="CalculatePayment()">คำนวน</button>
   </div>
-  <hr>
-  <div text-center>
-    <h3>ยอดที่ต้องชำระ</h3>
-  </div>
-  <ion-row>
-      <ion-item col-3 text-center>ปีที่</ion-item>
-      <ion-item col-3 text-center>คงค้าง</ion-item>
-      <ion-item col-3 text-center>ดอกเบี้ย</ion-item>
-      <ion-item col-3 text-center>ยอดที่ต้องชำระ</ion-item>
-    </ion-row>
-  
-     <!-- <ion-row *ngFor="let it of allProducts.allProducts">
-      <ion-item col-2 text-center>{{it.orderId}}</ion-item>
-      <ion-item col-2 text-center>{{it.name}}</ion-item>
-      <ion-item col-2 text-center>{{it.price}}</ion-item>
-      <ion-item col-2 text-center>{{it.amount}}</ion-item>
-     </ion-row>  -->
-
 
 </ion-content>

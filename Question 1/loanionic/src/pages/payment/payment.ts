@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { Loan } from '../../models/loan';
 
+
+@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-payment',
+  templateUrl: 'payment.html',
 })
-export class HomePage {
+export class PaymentPage {
+
   private loans: Loan;
-  private rate: number;
 
   constructor(public navCtrl: NavController, public http: HttpClient) {
     this.http.get<Loan>("https://localhost:5001/api/Loan").subscribe(
@@ -19,14 +21,8 @@ export class HomePage {
       });
   }
 
-  CalculateRate() {
-    this.http.post<Loan>("https://localhost:5001/api/Loan",
-      {
-        InterestRate: this.rate,
-      }).subscribe(
-        it => {
-          this.loans = it;
-        });
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad PaymentPage');
   }
 
 }
